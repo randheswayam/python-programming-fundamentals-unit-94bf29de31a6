@@ -5,25 +5,21 @@ day of the week and uses
 conditionals to decide which item is the special. 
 """
 #The fixed menu each enters is in brackets: item name, price in dollars. 
-from numba import none
-import typer
-
-
 MENU = [
-    ("Tomato soup ",3.50),
-    ("Grilled cheese sandwich ",4.25),
-    ("VEGGIE WRAP ",5.00),
-    ("Chicken curry ",6.75),
-    ("Fashion and chip ",7.50),
-    ("Garden salad ",4.00),
-    ("Apple pie ",2.25 ),
+    ("Tomato soup", 3.50),
+    ("Grilled cheese sandwich", 4.25),
+    ("Veggie wrap", 5.00),
+    ("Chicken curry", 6.75),
+    ("Fish and chips", 7.50),
+    ("Garden salad", 4.00),
+    ("Apple pie", 2.25),
 ]
 def menu_lines():
     """Build one text line per menu item. Example: tomato soup $3.50 """
     lines = []
     for name, price in MENU:
         lines.append(f"{name:<25}${price:.2f}")
-        return lines
+    return lines
 
 def print_menu():
     """Print the menu."""
@@ -34,7 +30,7 @@ def print_menu():
 def price_of(item_name):
     """Return the menu price of item_name, or 0.0 if it is not on the menu."""
     for name, price in MENU:
-        if name == item_name.lower():
+        if name.lower() == item_name.strip().lower():
             return price
     return 0.0
 
@@ -47,11 +43,11 @@ def find_special(day):
     elif chosen == "tuesday":
         return ("Grilled cheese sandwich", 0.10)
     elif chosen == "wednesday":
-        return ("veggie wrap", 0.15)
+        return ("Veggie wrap", 0.15)
     elif chosen == "thursday":
         return ("Chicken curry", 0.25)
     elif chosen == "friday":
-        return ("Fashion and chip", 0.30)
+        return ("Fish and chips", 0.30)
     else:
         return (None,0.0)
 
